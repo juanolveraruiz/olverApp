@@ -1,22 +1,20 @@
 /* Configuración General */
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    overflow: hidden; /* Evita scrolls innecesarios */
 }
 
-/* --- BARRA DE NAVEGACIÓN --- */
+/* Barra de Menú Superior */
 .navbar {
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #dcdcdc;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
     display: flex;
-    flex-wrap: wrap;
-    padding: 2px 10px;
+    padding: 0 10px;
+    font-size: 13px;
 }
 
 .dropdown {
@@ -25,51 +23,44 @@ body {
 }
 
 .dropbtn {
-    background-color: transparent;
-    color: #333;
-    padding: 10px 15px;
-    font-size: 14px;
+    background-color: #f0f0f0;
+    color: black;
+    padding: 8px 12px;
     border: none;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .dropbtn:hover {
-    background-color: #0078d7; /* Azul clásico de Windows al pasar el mouse */
+    background-color: #0078d7;
     color: white;
 }
 
-/* Menú Desplegable (Oculto por defecto) */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff;
-    min-width: 180px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    z-index: 100;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
     border: 1px solid #ccc;
-    margin-top: -1px;
 }
 
 .dropdown-content a {
-    color: #333;
-    padding: 10px 15px;
+    color: black;
+    padding: 8px 12px;
     text-decoration: none;
     display: block;
-    font-size: 13px;
 }
 
 .dropdown-content a:hover {
-    background-color: #e8f2ff;
-    color: #005a9e;
+    background-color: #e5e5e5;
 }
 
-/* Mostrar menú al pasar el mouse */
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* --- ÁREA CENTRAL --- */
+/* Contenido Principal */
 .main-content {
     flex-grow: 1;
     display: flex;
@@ -78,40 +69,218 @@ body {
 }
 
 .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 50px; /* Espacio entre el texto y el logo */
-}
-
-.text-accent {
-    color: #d32f2f; /* Rojo Olvera */
-    font-size: 3.5rem;
-    font-weight: 900;
-    letter-spacing: 2px;
+    text-align: center;
 }
 
 .central-logo img {
-    max-width: 450px;
+    max-width: 100%;
     height: auto;
-    display: block;
 }
 
-/* --- BARRA DE ESTADO INFERIOR --- */
+/* Barra de Estado Inferior */
 .footer-status {
     background-color: #f0f0f0;
-    border-top: 1px solid #cccccc;
-    display: flex;
-    gap: 20px;
-    padding: 5px 15px;
+    border-top: 1px solid #ccc;
+    padding: 3px 10px;
     font-size: 12px;
-    color: #555;
+    display: flex;
+    gap: 15px;
 }
 
 .status-item {
-    border-right: 1px solid #ccc;
-    padding-right: 20px;
+    color: black;
 }
 
-.status-item:last-child {
-    border-right: none;
+/* --- ESTILOS DE LA VENTANA EMERGENTE (MODAL) --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+    font-family: sans-serif; /* Usamos una fuente sin serifa más limpia */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% desde arriba y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho de la ventana */
+    max-width: 800px;
+    color: black;
+    position: relative;
+    border-radius: 5px;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- ESTILOS DEL FORMULARIO DE PEDIDO --- */
+.input-gris, .btn-gris, .textarea-gris {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.input-deshabilitado {
+    color: #888;
+}
+
+.campo-con-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-con-label label {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+/* Header del pedido */
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pedido-header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.pedido-folio-label {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+/* Sección de datos del cliente */
+.pedido-datos-cliente {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.nombre-con-placeholder, .vendedor-con-placeholder {
+    flex-grow: 1;
+}
+
+#folioSelect {
+    width: 60px;
+}
+
+/* Sección de datos del artículo */
+.pedido-datos-articulo {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.desc-con-placeholder {
+    flex-grow: 1;
+}
+
+.btn-gris {
+    cursor: pointer;
+}
+
+.btn-gris:hover {
+    background-color: #d0d0d0;
+}
+
+/* Sección de detalle del pedido */
+.pedido-detalle {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.detalle-tabla-contenedor {
+    flex-grow: 1;
+}
+
+.detalle-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detalle-tabla th, .detalle-tabla td {
+    border: 1px solid #aaa;
+    padding: 8px;
+    text-align: left;
+    background-color: #d0d0d0;
+}
+
+.detalle-tabla th {
+    background-color: #b0b0b0;
+}
+
+.detalle-imagen-contenedor {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.detalle-imagen-contenedor img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Sección de observaciones */
+.pedido-observaciones {
+    margin-bottom: 15px;
+}
+
+.pedido-observaciones label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.textarea-gris {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+/* Footer del pedido (Botón Grabar) */
+.pedido-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-grabar {
+    padding: 10px 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

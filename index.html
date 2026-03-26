@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electrodomésticos Olvera - Sistema de Gestión</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -45,23 +46,18 @@
         </div>
 
         <div class="dropdown">
-            <button class="dropbtn">Punto de Venta</button>
-        </div>
-        
-        <div class="dropdown">
             <button class="dropbtn">Pedidos</button>
             <div class="dropdown-content">
-                <a href="">Grabar Pedido</a>
-                <a href="">Control Pedidos</a>
-                <a href="">Pedidos Surtidores</a>
-                <a href="">Pedidos Empacadores</a>
-                <a href="">Control de Embarques</a>
-                <a href="">Confirmar Recepción</a>
-                <a href="">Impresión Temporal</a>
+                <a href="#" id="grabarPedido">Grabar Pedido</a>
+                <a href="#">Consultar Pedido</a>
             </div>
         </div>
 
-        </nav>
+        <div class="dropdown">
+            <button class="dropbtn">Punto de Venta</button>
+        </div>
+        
+    </nav>
 
     <main class="main-content">
         <div class="logo-container">
@@ -76,6 +72,98 @@
         <div class="status-item">Empaque</div>
         <div class="status-item">CARLOS 1</div>
     </footer>
+
+    <div id="pedidoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <header class="pedido-header">
+                <h1>CAPTURA DE PEDIDO</h1>
+                <div class="pedido-info">
+                    <span class="pedido-folio-label">EC533</span>
+                </div>
+            </header>
+
+            <section class="pedido-datos-cliente">
+                <div class="campo-con-label">
+                    <label>Folio</label>
+                    <select id="folioSelect" class="input-gris">
+                        <option value="A">A</option>
+                        <option value="EC">EC</option>
+                        <option value="ML">ML</option>
+                        <option value="VA">VA</option>
+                    </select>
+                </div>
+                <div class="campo-con-label">
+                    <label>Cliente</label>
+                    <input type="text" id="clienteId" class="input-gris">
+                </div>
+                <div class="campo-con-label nombre-con-placeholder">
+                    <label>Nombre</label>
+                    <input type="text" id="clienteNombre" class="input-gris input-deshabilitado" readonly placeholder="RUBEN TORRES HERNANDES">
+                </div>
+                <div class="campo-con-label vendedor-con-placeholder">
+                    <label>Vendedor</label>
+                    <input type="number" id="vendedorId" class="input-gris" placeholder="18">
+                </div>
+            </section>
+
+            <section class="pedido-datos-articulo">
+                <div class="campo-con-label">
+                    <label>Cant.</label>
+                    <input type="number" id="articuloCant" class="input-gris">
+                </div>
+                <div class="campo-con-label">
+                    <label>Clave</label>
+                    <input type="text" id="articuloClave" class="input-gris">
+                </div>
+                <div class="campo-con-label desc-con-placeholder">
+                    <label>Descripción</label>
+                    <input type="text" id="articuloDesc" class="input-gris input-deshabilitado" readonly placeholder="QUEMADOR ECTRAGRANDE HIERRO 3/4">
+                </div>
+                <button id="btnAgregar" class="btn-gris">Agregar &#10003;</button>
+            </section>
+
+            <section class="pedido-detalle">
+                <div class="detalle-tabla-contenedor">
+                    <table class="detalle-tabla">
+                        <thead>
+                            <tr>
+                                <th>Cant.</th>
+                                <th>Clave</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>QUIN091</td>
+                                <td>QUEMADOR CHICO HIERRO FUNDIDO B31-XS</td>
+                            </tr>
+                            </tbody>
+                    </table>
+                </div>
+                <div class="detalle-imagen-contenedor">
+                    <img id="articuloImagen" src="https://static.wixstatic.com/media/893bd5_b786f0c4068c4a03a7499709b5523d4d~mv2.jpg/v1/fill/w_500,h_500,al_c,q_85,usm_0.66_1.00_0.01/893bd5_b786f0c4068c4a03a7499709b5523d4d~mv2.jpg" alt="Imagen del producto">
+                </div>
+            </section>
+
+            <section class="pedido-observaciones">
+                <label>Observaciones</label>
+                <textarea class="textarea-gris"></textarea>
+            </section>
+
+            <footer class="pedido-footer">
+                <button id="btnGrabar" class="btn-gris btn-grabar">
+                    GRABAR <i class="fa-regular fa-floppy-disk"></i>
+                </button>
+            </footer>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
